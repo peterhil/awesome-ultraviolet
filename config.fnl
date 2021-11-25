@@ -1,3 +1,5 @@
+;; === Awesome ultraviolet config ===
+;;
 ;; If LuaRocks is installed, make sure that packages installed through
 ;; it are found (e.g. lgi). If LuaRocks is not installed, do nothing.
 (pcall require :luarocks.loader)
@@ -18,7 +20,8 @@
 ;; when client with a matching name is opened:
 (require :awful.hotkeys_popup.keys)
 
-;; {{{ Error handling
+;; === Error handling ===
+;;
 ;; Check if awesome encountered an error during startup and fell back to
 ;; another config (This code will only ever execute for the fallback config)
 (when awesome.startup_errors
@@ -40,9 +43,8 @@
                                              :title "Oops, an error happened!"
                                              :text (tostring err)})
                             (set in-error false))))
-;; }}}
 
-;; {{{ Variable definitions
+;; === Variable definitions ===
 ;;
 ;; Themes define colours, icons, font and wallpapers.
 ;; (beautiful.init (.. (gears.filesystem.get_themes_dir) :default/theme.lua))
@@ -54,7 +56,7 @@
 (global editor (or (os.getenv :EDITOR) "emacs -nw -q"))
 (global editor-cmd (.. terminal " -e " editor))
 
-;; Default modkey.
+;; Default modkey
 ;; Usually, Mod4 is the key with a logo between Control and Alt.
 (global modkey :Mod4)
 
@@ -77,9 +79,9 @@
       awful.layout.suit.spiral
       awful.layout.suit.max.fullscreen
       ])
-;; }}}
 
-;; {{{ Menu
+;; === Menu ===
+;;
 ;; Create a launcher widget and a main menu
 (global myawesomemenu
         [[:hotkeys
@@ -108,7 +110,8 @@
 ;; Keyboard map indicator and switcher
 ;; (global mykeyboardlayout (awful.widget.keyboardlayout)) ;; Use ibus instead
 
-;; {{{ Wibar
+;; === Wibar ===
+;;
 ;; Create a textclock widget
 (global mytextclock (wibox.widget.textclock))
 
@@ -231,17 +234,18 @@
         2 (wibox.widget.systray)
         3 mytextclock
         4 s.mylayoutbox}})))
-;; }}}
 
-;; {{{ Mouse bindings
+;; === Mouse bindings ===
+;;
 (root.buttons
  (gears.table.join
   (awful.button {} 3 mymainmenu.toggle)
   (awful.button {} 4 awful.tag.viewnext)
   (awful.button {} 5 awful.tag.viewprev)))
-;; }}}
 
-;; {{{ Key bindings
+
+;; === Key bindings ===
+;;
 (global globalkeys
         (gears.table.join
          (awful.key {1 modkey} :s hotkeys-popup.show_help
@@ -521,9 +525,9 @@
 
 ;; Set keys
 (root.keys globalkeys)
-;; }}}
 
-;; {{{ Rules
+;; === Rules ===
+;;
 ;; Rules to apply to new clients (through the "manage" signal).
 (set awful.rules.rules
      [;; All clients will match this rule.
@@ -575,9 +579,9 @@
       ;; {:rule {:class "Firefox"},
       ;;  :properties {:screen 1 :tag "3"}}
       ])
-;; }}}
 
-;; {{{ Signals
+;; === Signals ===
+;;
 ;; Signal function to execute when a new client appears.
 (client.connect_signal
  :manage
@@ -645,4 +649,3 @@
  :unfocus
  (fn [c]
    (set c.border_color beautiful.border_normal)))
-;; }}}
