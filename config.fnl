@@ -538,10 +538,13 @@
                     :placement (+ awful.placement.no_overlap
                                   awful.placement.no_offscreen)}}
       ;; Floating clients.
-      {:rule_any {:instance [:DTA ;; Firefox addon DownThemAll
+      {:rule_any {:instance [
+                             :DTA ;; Firefox addon DownThemAll
                              :copyq ;; Includes session name in class.
+                             :hexcalc
+                             :lumina-screenshot
                              :pinentry
-                             :lumina-screenshot]
+                             ]
                   :class [:Arandr
                           :Blueman-manager
                           :Gpick
