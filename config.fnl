@@ -106,7 +106,7 @@
 ;; }}}
 
 ;; Keyboard map indicator and switcher
-(global mykeyboardlayout (awful.widget.keyboardlayout))
+;; (global mykeyboardlayout (awful.widget.keyboardlayout)) ;; Use ibus instead
 
 ;; {{{ Wibar
 ;; Create a textclock widget
@@ -227,7 +227,7 @@
      2 s.mytasklist ;; Middle widget
      3 {;; Right widgets
         :layout wibox.layout.fixed.horizontal
-        1 mykeyboardlayout
+        ;; 1 mykeyboardlayout
         2 (wibox.widget.systray)
         3 mytextclock
         4 s.mylayoutbox}})))
