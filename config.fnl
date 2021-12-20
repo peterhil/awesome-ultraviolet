@@ -120,12 +120,12 @@
        (gears.table.join
         (awful.button {} 1
                       (fn [t] (t:view_only)))
-        (awful.button {1 modkey} 1
+        (awful.button [modkey] 1
                       (fn [t]
                         (when client.focus
                           (client.focus:move_to_tag t))))
         (awful.button {} 3 awful.tag.viewtoggle)
-        (awful.button {1 modkey} 3
+        (awful.button [modkey] 3
                       (fn [t]
                         (when client.focus
                           (client.focus:toggle_tag t))))
@@ -248,56 +248,56 @@
 ;;
 (global globalkeys
         (gears.table.join
-         (awful.key {1 modkey} :s hotkeys-popup.show_help
+         (awful.key [modkey] :s hotkeys-popup.show_help
                     {:description "show help" :group :awesome})
-         (awful.key {1 modkey} :Left awful.tag.viewprev
+         (awful.key [modkey] :Left awful.tag.viewprev
                     {:description "view previous" :group :tag})
-         (awful.key {1 modkey} :Right awful.tag.viewnext
+         (awful.key [modkey] :Right awful.tag.viewnext
                     {:description "view next" :group :tag})
-         (awful.key {1 modkey} :Escape
+         (awful.key [modkey] :Escape
                     awful.tag.history.restore
                     {:description "go back" :group :tag})
-         (awful.key {1 modkey} :j
+         (awful.key [modkey] :j
                     (fn []
                       (awful.client.focus.byidx 1))
                     {:description "focus next by index"
                      :group :client})
-         (awful.key {1 modkey} :k
+         (awful.key [modkey] :k
                     (fn []
                       (awful.client.focus.byidx (- 1)))
                     {:description "focus previous by index"
                      :group :client})
-         (awful.key {1 modkey} :w
+         (awful.key [modkey] :w
                     (fn []
                       (mymainmenu:show))
                     {:description "show main menu"
                      :group :awesome})
 
          ;; Layout manipulation
-         (awful.key {1 modkey 2 :Shift} :j
+         (awful.key [modkey :Shift] :j
                     (fn []
                       (awful.client.swap.byidx 1))
                     {:description "swap with next client by index"
                      :group :client})
-         (awful.key {1 modkey 2 :Shift} :k
+         (awful.key [modkey :Shift] :k
                     (fn []
                       (awful.client.swap.byidx (- 1)))
                     {:description "swap with previous client by index"
                      :group :client})
-         (awful.key {1 modkey 2 :Control} :j
+         (awful.key [modkey :Control] :j
                     (fn []
                       (awful.screen.focus_relative 1))
                     {:description "focus the next screen"
                      :group :screen})
-         (awful.key {1 modkey 2 :Control} :k
+         (awful.key [modkey :Control] :k
                     (fn []
                       (awful.screen.focus_relative (- 1)))
                     {:description "focus the previous screen"
                      :group :screen})
-         (awful.key {1 modkey} :u awful.client.urgent.jumpto
+         (awful.key [modkey] :u awful.client.urgent.jumpto
                     {:description "jump to urgent client"
                      :group :client})
-         (awful.key {1 modkey} :Tab
+         (awful.key [modkey] :Tab
                     (fn []
                       (awful.client.focus.history.previous)
                       (when client.focus
@@ -305,58 +305,58 @@
                     {:description "go back" :group :client})
 
          ;; Standard program
-         (awful.key {1 modkey} :Return
+         (awful.key [modkey] :Return
                     (fn []
                       (awful.spawn terminal))
                     {:description "open a terminal"
                      :group :launcher})
-         (awful.key {1 modkey 2 :Control} :r awesome.restart
+         (awful.key [modkey :Control] :r awesome.restart
                     {:description "reload awesome"
                      :group :awesome})
-         (awful.key {1 modkey 2 :Shift} :q awesome.quit
+         (awful.key [modkey :Shift] :q awesome.quit
                     {:description "quit awesome"
                      :group :awesome})
-         (awful.key {1 modkey} :l
+         (awful.key [modkey] :l
                     (fn []
                       (awful.tag.incmwfact 0.05))
                     {:description "increase master width factor"
                      :group :layout})
-         (awful.key {1 modkey} :h
+         (awful.key [modkey] :h
                     (fn []
                       (awful.tag.incmwfact (- 0.05)))
                     {:description "decrease master width factor"
                      :group :layout})
-         (awful.key {1 modkey 2 :Shift} :h
+         (awful.key [modkey :Shift] :h
                     (fn []
                       (awful.tag.incnmaster 1 nil true))
                     {:description "increase the number of master clients"
                      :group :layout})
-         (awful.key {1 modkey 2 :Shift} :l
+         (awful.key [modkey :Shift] :l
                     (fn []
                       (awful.tag.incnmaster (- 1) nil true))
                     {:description "decrease the number of master clients"
                      :group :layout})
-         (awful.key {1 modkey 2 :Control} :h
+         (awful.key [modkey :Control] :h
                     (fn []
                       (awful.tag.incncol 1 nil true))
                     {:description "increase the number of columns"
                      :group :layout})
-         (awful.key {1 modkey 2 :Control} :l
+         (awful.key [modkey :Control] :l
                     (fn []
                       (awful.tag.incncol (- 1) nil true))
                     {:description "decrease the number of columns"
                      :group :layout})
-         (awful.key {1 modkey} :space
+         (awful.key [modkey] :space
                     (fn []
                       (awful.layout.inc 1))
                     {:description "select next"
                      :group :layout})
-         (awful.key {1 modkey 2 :Shift} :space
+         (awful.key [modkey :Shift] :space
                     (fn []
                       (awful.layout.inc (- 1)))
                     {:description "select previous"
                      :group :layout})
-         (awful.key {1 modkey 2 :Control} :n
+         (awful.key [modkey :Control] :n
                     (fn []
                       (let [c (awful.client.restore)]
                         ;; Focus restored client
@@ -368,14 +368,14 @@
                      :group :client})
 
          ;; Prompt
-         (awful.key {1 modkey} :r
+         (awful.key [modkey] :r
                     (fn []
                       (: (. (awful.screen.focused)
                             :mypromptbox)
                          :run))
                     {:description "run prompt"
                      :group :launcher})
-         (awful.key {1 modkey} :x
+         (awful.key [modkey] :x
                     (fn []
                       (awful.prompt.run
                        {:prompt "Run Lua code: "
@@ -389,7 +389,7 @@
                      :group :awesome})
 
          ;; Menubar
-         (awful.key {1 modkey} :p
+         (awful.key [modkey] :p
                     (fn []
                       (menubar.show))
                     {:description "show the menubar"
@@ -397,56 +397,56 @@
 
 (global clientkeys
         (gears.table.join
-         (awful.key {1 modkey} :f
+         (awful.key [modkey] :f
                     (fn [c]
                       (set c.fullscreen (not c.fullscreen))
                       (c:raise))
                     {:description "toggle fullscreen"
                      :group :client})
-         (awful.key {1 modkey 2 :Shift} :c
+         (awful.key [modkey :Shift] :c
                     (fn [c]
                       (c:kill))
                     {:description :close :group :client})
-         (awful.key {1 modkey 2 :Control} :space
+         (awful.key [modkey :Control] :space
                     awful.client.floating.toggle
                     {:description "toggle floating"
                      :group :client})
-         (awful.key {1 modkey 2 :Control} :Return
+         (awful.key [modkey :Control] :Return
                     (fn [c]
                       (c:swap (awful.client.getmaster)))
                     {:description "move to master"
                      :group :client})
-         (awful.key {1 modkey} :o
+         (awful.key [modkey] :o
                     (fn [c]
                       (c:move_to_screen))
                     {:description "move to screen"
                      :group :client})
-         (awful.key {1 modkey} :t
+         (awful.key [modkey] :t
                     (fn [c]
                       (set c.ontop (not c.ontop)))
                     {:description "toggle keep on top"
                      :group :client})
-         (awful.key {1 modkey} :n
+         (awful.key [modkey] :n
                     (fn [c]
                       ;; The client currently has the input focus, so
                       ;; it cannot be minimized, since minimized
                       ;; clients can't have the focus.
                       (set c.minimized true))
                     {:description :minimize :group :client})
-         (awful.key {1 modkey} :m
+         (awful.key [modkey] :m
                     (fn [c]
                       (set c.maximized (not c.maximized))
                       (c:raise))
                     {:description "(un)maximize"
                      :group :client})
-         (awful.key {1 modkey 2 :Control} :m
+         (awful.key [modkey :Control] :m
                     (fn [c]
                       (set c.maximized_vertical
                            (not c.maximized_vertical))
                       (c:raise))
                     {:description "(un)maximize vertically"
                      :group :client})
-         (awful.key {1 modkey 2 :Shift} :m
+         (awful.key [modkey :Shift] :m
                     (fn [c]
                       (set c.maximized_horizontal
                            (not c.maximized_horizontal))
@@ -462,7 +462,7 @@
           (gears.table.join
            globalkeys
            ;; View tag only
-           (awful.key {1 modkey} (.. "#" (+ i 9))
+           (awful.key [modkey] (.. "#" (+ i 9))
                       (fn []
                         (let [screen (awful.screen.focused)
                               tag (. screen.tags i)]
@@ -471,7 +471,7 @@
                       {:description (.. "view tag #" i)
                        :group :tag})
            ;; Toggle tag display
-           (awful.key {1 modkey 2 :Control} (.. "#" (+ i 9))
+           (awful.key [modkey :Control] (.. "#" (+ i 9))
                       (fn []
                         (let [screen (awful.screen.focused)
                               tag (. screen.tags i)]
@@ -480,7 +480,7 @@
                       {:description (.. "toggle tag #" i)
                        :group :tag})
            ;; Move client to tag
-           (awful.key {1 modkey 2 :Shift} (.. "#" (+ i 9))
+           (awful.key [modkey :Shift] (.. "#" (+ i 9))
                       (fn []
                         (when client.focus
                           (local tag
@@ -491,7 +491,7 @@
                                         i)
                        :group :tag})
            ;; Toggle tag on focused client
-           (awful.key {1 modkey 2 :Control 3 :Shift}
+           (awful.key [modkey :Control :Shift]
                       (.. "#" (+ i 9))
                       (fn []
                         (when client.focus
@@ -510,13 +510,13 @@
                          (c:emit_signal "request::activate"
                                         :mouse_click
                                         {:raise true})))
-         (awful.button {1 modkey} 1
+         (awful.button [modkey] 1
                        (fn [c]
                          (c:emit_signal "request::activate"
                                         :mouse_click
                                         {:raise true})
                          (awful.mouse.client.move c)))
-         (awful.button {1 modkey} 3
+         (awful.button [modkey] 3
                        (fn [c]
                          (c:emit_signal "request::activate"
                                         :mouse_click
