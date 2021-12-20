@@ -93,7 +93,7 @@
          [:manual (.. terminal " -e 'man -P less awesome'")]
          ["edit config" (.. editor-cmd " " awesome.conffile)]
          [:restart awesome.restart]
-         [:quit awesome.quit]])
+         [:quit (fn [] (awesome.quit))]])
 
 (global mymainmenu
         (awful.menu {:items [[:awesome myawesomemenu beautiful.awesome_icon]
