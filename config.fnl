@@ -92,7 +92,7 @@
             (hotkeys-popup.show_help nil (awful.screen.focused)))]
          [:manual (.. terminal " -e 'man -P less awesome'")]
          ["edit config" (.. editor-cmd " " awesome.conffile)]
-         [:restart awesome.restart]
+         [:restart (fn [] (awesome.restart))]
          [:quit (fn [] (awesome.quit))]])
 
 (global mymainmenu
