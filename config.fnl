@@ -170,15 +170,7 @@
    (set-wallpaper s)
 
    ;; Each screen has its own tag table.
-   (awful.tag {1 :1
-               2 :2
-               3 :3
-               4 :4
-               5 :5
-               6 :6
-               7 :7
-               8 :8
-               9 :9}
+   (awful.tag [:1 :2 :3 :4 :5 :6 :7 :8 :9]
               s (. awful.layout.layouts 1))
 
    ;; Create a promptbox for each screen
