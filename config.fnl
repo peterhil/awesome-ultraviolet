@@ -8,14 +8,18 @@
 (local gears (require :gears))
 (local awful (require :awful))
 (require :awful.autofocus)
+
 ;; Widget and layout library
 (local wibox (require :wibox))
+
 ;; Theme handling library
 (local beautiful (require :beautiful))
+
 ;; Notification library
 (local naughty (require :naughty))
 (local menubar (require :menubar))
 (local hotkeys-popup (require :awful.hotkeys_popup))
+
 ;; Enable hotkeys help widget for VIM and other apps
 ;; when client with a matching name is opened:
 (require :awful.hotkeys_popup.keys)
@@ -32,17 +36,16 @@
 ;; Handle runtime errors after startup
 (do
   (var in-error false)
-  (awesome.connect_signal "debug::error"
-                          (fn [err]
-                            ;; Make sure we don't go into an endless
-                            ;; error loop
-                            (when in-error
-                              (lua "return"))
-                            (set in-error true)
-                            (naughty.notify {:preset naughty.config.presets.critical
-                                             :title "Oops, an error happened!"
-                                             :text (tostring err)})
-                            (set in-error false))))
+  (fn on-runtime-error [err]
+    ;; Make sure we don't go into an endless error loop
+    (when in-error
+      (lua "return"))
+    (set in-error true)
+    (naughty.notify {:preset naughty.config.presets.critical
+                     :title "Oops, an error happened!"
+                     :text (tostring err)})
+    (set in-error false))
+  (awesome.connect_signal "debug::error" on-runtime-error))
 
 ;; === Variable definitions ===
 ;;
