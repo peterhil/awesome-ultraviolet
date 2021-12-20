@@ -97,9 +97,9 @@
 
 (global mymainmenu
         (awful.menu {:items [[:awesome myawesomemenu beautiful.awesome_icon]
-                             ["open terminal" terminal]
-                             ["open editor" editor]
-                             ["open browser" :firefox]]}))
+                             ["terminal" terminal]
+                             ["editor" editor]
+                             ["browser" :firefox]]}))
 
 (global mylauncher
         (awful.widget.launcher
