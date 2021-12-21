@@ -244,11 +244,14 @@
 ;;
 (global globalkeys
         (gears.table.join
-         (awful.key [modkey] :s hotkeys-popup.show_help
+         (awful.key [modkey] :s
+                    hotkeys-popup.show_help
                     {:description "show help" :group :awesome})
-         (awful.key [modkey] :Left awful.tag.viewprev
+         (awful.key [modkey] :Left
+                    awful.tag.viewprev
                     {:description "view previous" :group :tag})
-         (awful.key [modkey] :Right awful.tag.viewnext
+         (awful.key [modkey] :Right
+                    awful.tag.viewnext
                     {:description "view next" :group :tag})
          (awful.key [modkey] :Escape
                     awful.tag.history.restore
