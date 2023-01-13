@@ -55,7 +55,7 @@
                     "/themes/ultraviolet/theme.lua"))
 
 ;; This is used later as the default terminal and editor to run.
-(global terminal :sakura)
+(global terminal "sakura -l")
 (global editor (or (os.getenv :EDITOR) "emacs -nw -q"))
 (global editor-cmd (.. terminal " -e " editor))
 
