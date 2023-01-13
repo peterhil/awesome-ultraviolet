@@ -164,7 +164,7 @@
     ;; If wallpaper is a function, call it with the screen
     (when (= (type wallpaper) :function)
       (set wallpaper (wallpaper s)))
-    (gears.wallpaper.maximized wallpaper s true)))
+    (gears.wallpaper.maximized wallpaper s false)))
 
 ;; Re-set wallpaper when a screen's geometry changes
 (screen.connect_signal "property::geometry" set-wallpaper)
