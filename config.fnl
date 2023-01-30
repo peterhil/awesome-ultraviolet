@@ -55,6 +55,7 @@
                     "/themes/ultraviolet/theme.lua"))
 
 ;; This is used later as the default terminal and editor to run.
+(global browser "qutebrowser")
 (global terminal "sakura -l")
 (global editor (or (os.getenv :EDITOR) "emacs -nw -q"))
 (global editor-cmd (.. terminal " -e " editor))
@@ -99,7 +100,7 @@
         (awful.menu {:items [[:awesome myawesomemenu beautiful.awesome_icon]
                              ["terminal" terminal]
                              ["editor" editor]
-                             ["browser" :firefox]]}))
+                             ["browser" browser]]}))
 
 (global mylauncher
         (awful.widget.launcher
